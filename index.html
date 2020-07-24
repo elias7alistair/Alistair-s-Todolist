@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Resources/style.css" />
+    <link rel="stylesheet" type="text/css" href="Vendors/grid.css" />
+    <link rel="stylesheet" type="text/css" href="Vendors/normalize.css" />
+
+    <title>To Do List</title>
+  </head>
+  <body>
+    <section class="search">
+      <div class="row">
+        <h2>Add Task Here</h2>
+      </div>
+
+      <div class="searchbox" class="row">
+        <div class="row">
+          <div>
+            <label for="task">Task</label>
+          </div>
+
+          <div>
+            <input
+              type="text"
+              name="task"
+              id="task"
+              placeholder="task"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="description">desciption</label>
+          </div>
+
+          <div>
+            <textarea
+              name="description"
+              id="description"
+              placeholder="description"
+            ></textarea>
+          </div>
+
+          <div>
+            <button id="add-task" class="btn">Add Task</button>
+          </div>
+
+          
+        </div>
+
+      
+      </div>
+    </section>
+
+    <section >
+
+        <div class="task-list">
+            <ul id="list">
+                <!-- <li id="card" class="card col span-1-of-3"><div class="task-name"><h3>safdsdaf</h3></div><br/>
+                <div><p>description<p/></div>              
+                <div > <button id="deleteBtn" class="deleteBtn">Delete</button></div>
+                </li>
+              -->
+            </ul>
+
+        </div>
+
+
+
+    </section>
+
+    <script type="text/javascript" src="Resources/script.js"></script>
+  </body>
+</html>
