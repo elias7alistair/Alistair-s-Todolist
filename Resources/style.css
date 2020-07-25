@@ -20,7 +20,11 @@ margin: 70px auto;
 width: 700px;
 
 }
-
+.search h4{
+    display: flex;
+    justify-content: center;
+    
+}
 .search h2{
     font-size: 70px;
     text-align: center;
