@@ -2,21 +2,22 @@ var button = document.getElementById("add-task");
 var taskTitle = document.getElementById("task");
 var taskdescription = document.getElementById("description");
 var ul = document.getElementById("list");
-
+var done = document.getElementsByClassName("DoneBtn");
+var del = document.getElementsByClassName("deleteBtn");
 // var delBtn = document.getElementById("deleteBtn");
 
 
 var taskArray = [
-//   {
-//     id: 0,
-//     taskName: "Get up early",
-//     description: "Getting up early is good for health",
-//   },
-//   {
-//       id: 1,
-//     taskName: "Get up early",
-//     description: "Getting up early is good for health",
-//   },
+  // {
+  // //   id: 0,
+  // //   taskName: "Get up early",
+  // //   description: "Getting up early is good for health",
+  // // },
+  // // {
+  // //     id: 1,
+  // //   taskName: "Drink water",
+  // //   description: "Drinking water is good for health",
+  // // },
 ];
 
 
@@ -31,44 +32,47 @@ button.addEventListener("click", function addTask() {
 function addItems() {
 
     var user = {};
-    user.id = taskArray.length;
+    // user.id = taskArray.length;
     user.taskName = taskTitle.value;
     user.description = taskdescription.value;
+    user.taskStatus = true;
 
     taskArray.push(user);
-
-    ul.innerHTML = "";
-
     printTasks();
 
-//   html = `<li id="1" class="card col span-1-of-5"><div class="task-name"><h3>${taskTitle.value}</h3></div><br/>
-//     <div><p>${taskdescription.value}<p/></div>       
-//     <div><button id="deleteBtn" class="deleteBtn">Delete</button></div>        
-//     </li>`;
-
-//   ul.innerHTML += html;
-
-//   var del = document.getElementsByClassName("deleteBtn");
-//   for (i = 0; i < del.length; i++) {
-//     del[i].setAttribute("onclick", "deleteitem()");
-//   }
 }
 
 function printTasks(){
+  ul.innerHTML = "";
+  var count = 0;
     taskArray.map((data) => {
-        html = `<li id="${data.id}" class="card col span-1-of-5"><div class="task-name"><h3>${data.taskName}</h3></div><br/>
+      if(data.taskStatus === true){
+        var classStrike = ""; 
+        var status = "Done";
+      }
+      else{
+        var classStrike = "strikeout";
+        var status = "undo";
+      
+      }
+     
+      data.id = count;
+      count++;
+
+        html = `<li id="${data.id}" class="card col span-1-of-5"><div class="task-name"><h3 id="${data.id}" class="card-head ${classStrike}" >${data.taskName}</h3></div><br/>
   <div><p>${data.description}<p/></div>       
-  <div><button id="${data.id}" class="deleteBtn">Delete</button></div>        
+  <div><button id="${data.id}" class="DoneBtn btn ${data.taskStatus}">${status}</button> <button id="${data.id}" class="deleteBtn btn">Delete</button></div>        
   </li>`;
 
 ul.innerHTML += html;
 
-var del = document.getElementsByClassName("deleteBtn");
-for (i = 0; i < del.length; i++) {
-  del[i].setAttribute("onclick", "deleteitem(this.id)");
-}
-  }
-  )
+  del[data.id].setAttribute("onclick", "deleteitem(this.id)");
+  done[data.id].setAttribute("onclick", "strikeOut(this.id)");
+
+
+    }
+  );
+    
 }
 
 function focusOnDes() {
@@ -83,6 +87,19 @@ function additemsafterkeypress() {
     resetInput();
     taskdescription.blur();
   }
+}
+
+function strikeOut(id){
+
+if(taskArray[id].taskStatus === true){
+  taskArray[id].taskStatus = false;
+}else{
+  taskArray[id].taskStatus = true;
+}
+
+  
+printTasks();
+
 }
 
 function resetInput() {
@@ -104,11 +121,16 @@ function deleteitem(id) {
   taskArray = filterArray;
   del.setAttribute("id", "animate");
   
-  setInterval(a, 2000);
-
+  setInterval(a, 1000);
+  setInterval(b,2000);
   function a() {
     del.remove();
+    
   }
+
+  function b(){
+    printTasks();
+  }
+  
 }
 
-printTasks();

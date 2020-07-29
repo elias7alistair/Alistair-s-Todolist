@@ -23,8 +23,22 @@ width: 700px;
 .search h4{
     display: flex;
     justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size:  30px;
+    padding: 10px;
+  
+}
+.borderBottom {
+    height: 3px;
+    background-color: #e67e22;
+    width: 80px;
+    margin: 0 auto;  
+    margin-top: 10px;
+    margin-bottom: 10px;
     
 }
+
 .search h2{
     font-size: 70px;
     text-align: center;
@@ -47,13 +61,16 @@ textarea{
     height: 100px;
 }
 
-.btn{
+.Addbtn{
 
     width: 200px;
     height: 40px;
   
 }
 
+.strikeout{
+    text-decoration: line-through;
+}
 
 .card{
     background-color:#e4ecf5;
@@ -75,11 +92,23 @@ textarea{
     font-size: 30px;
 }
 
-.deleteBtn{
+.btn{
+
     margin-top: 10px;
-    padding: 3px 20px;
-  
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
     
+}
+
+.btn:hover{
+    background-color: #54cc58;
+    transition: background-color 0.2s;
 }
 
 .done{
